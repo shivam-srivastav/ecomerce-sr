@@ -40,7 +40,12 @@ if (environment !== 'production') {
     app.use(logger('dev'));
 }
 
-app.use('/api/v1',Router)
+app.use('/api/v1', Router)
+app.get('/', (req, res) => {
+  return res.status(200).json({
+    Message:"Server is connected"
+  })
+})
 
 
 app.listen(`${stage.port}`, () => {
