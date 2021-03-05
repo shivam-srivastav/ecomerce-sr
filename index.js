@@ -48,7 +48,7 @@ app.get('/', (req, res) => {
 })
 
 
-app.listen(`${stage.port}`, () => {
+app.listen(`${env.process.PORT||stage.port}`, () => {
     console.log(`Server now listening at localhost: ${stage.port}`);
 })
 
