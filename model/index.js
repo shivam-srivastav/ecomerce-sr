@@ -6,28 +6,44 @@ const UserSchema = new Schema({
     email: { type: String },
     password: { type: String },
     role: { type: String },
-    profile_pic: { type: Buffer },
-});
+    profile_pic: { type: String },
+    balance: { type: Number },
+    sell_product: { type: Array },
+    orders: { type: Array },
+    history: { type: Array },
+    address:{type:String}
 
-const ClassroomSchema = new Schema({
-    class_name: { type: String },
-    associate_teacher: { type: String },
-    students: { type: String }
 });
+const ProductSchema = new Schema({
+    p_name: String,
+    p_price: Number,
+    p_img: String,
+    p_details: String,
+    seller_id: String,
+    rating: Array,
+    reviews: Array,
+    tags: Array,
+    category: String,
+    createdAt: Date,
+    buyer_id: String,
+    discount:String,
+    
+})
 
-const AttendenceSchema = new Schema({
-    class_id: { type: String },
-    lecture:{type:Number},
-    rawImg: { type: Buffer },
-    data: { type: String }
+const LedgerSchema = new Schema({
+    user_id: String,
+    product_id: String,
+    txn_no: String,
+    order_no: String,
+    bal_before_txn: Number,
 });
 
 const User = mongoose.model("User", UserSchema);
-const Classroom = mongoose.model("Classroom", ClassroomSchema);
-const Attendence = mongoose.model('Attendence', AttendenceSchema);
+const Product = mongoose.model("Product", ProductSchema);
+const Ledger = mongoose.model("Ledger", LedgerSchema);
 
 module.exports = {
     User,
-    Classroom,
-    Attendence
+    Product,
+    Ledger
 }

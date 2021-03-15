@@ -54,18 +54,20 @@ login = (req, res) => {
         if (user.password !== req.body.password) {
             return res.status(402).json({
                 message: "Invalid Password",
-                status: "402",
+                status: "402"
             })
         }
 
         jwt.sign({ user:user }, "shivam", (err, token) => {
             if (err) {
-                return res.status(403).json({message:"error token",token:"failed"})
+                return res.status(403).json({ message: "error token", token: "failed" })
             }
             else
+                res.cookie('token', token,);
+            console.log(res)
             return res.status(200).json({
                 message: "success",
-                token:token
+                token
             })
         })
         // return res.status(200).json({

@@ -49,7 +49,7 @@ app.get('/', (req, res) => {
 
 app.listen(
  process.env.PORT || 3000, () => {
-    console.log(`Server now listening at localhost:`);
+    console.log(`Server now listening at localhost:${process.env.PORT}`);
 })
 
 module.exports = app;
